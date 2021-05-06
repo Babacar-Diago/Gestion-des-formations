@@ -1,0 +1,25 @@
+<div class="container" *ngIf="authService.estConnecte()">
+  <div class="alert alert-success row col-md-6 col-md-offset-3" *ngIf="mode==1">
+    <strong>Formation ajoutée avec succès</strong>
+  </div>
+  <div class="row col-md-6 col-md-offset-3">
+    <div class="panel panel-default">
+      <div class="panel-heading">Nouvelle formation</div>
+      <div class="panel-body">
+        <form #f="ngForm" (ngSubmit)="onSaveFormation(f.value)">
+          <div class="form-group">
+            <label class="control-label"> Nom de la formation </label>
+            <input class="form-control" type="text" name="nom" ngModel="" required />
+          </div>
+          <div class="form-group">
+            <label class="control-label"> Durée de la formation (en heure) </label>
+            <input class="form-control" type="number" name="duree" ngModel="" required />
+          </div>
+          <button class="btn btn-success" type="submit" [disabled]="!f.valid">Save</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+

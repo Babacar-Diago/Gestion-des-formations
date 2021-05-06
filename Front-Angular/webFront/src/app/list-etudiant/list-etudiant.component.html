@@ -1,0 +1,42 @@
+
+
+<div class="col-lg-6 card card-body col-md-offset-3" >
+  <p></p>
+  <!--<button class="btn btn-primary" (click)="onNewEtudiant()" *ngIf="authService.isAdmin()">Ajouter un nouveau étudiant</button>
+  <p></p>-->
+  <div class="panel panel-primary">
+    <div class="panel-heading">LISTE DES ETUDIANTS</div>
+    <div class="panel-body">
+      <table class="table table-bordered">
+        <thead>
+        <tr>
+          <th>ID</th>
+          <th>Prénom</th>
+          <th>Nom</th>
+          <th>Date de naissance</th>
+          <th *ngIf="authService.isAdmin()">Supprimer</th>
+          <th *ngIf="authService.isAdmin()">Modifier</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let e of etudiants._embedded.etudiants">
+          <td>{{e.id}}</td>
+          <td>{{e.prenom}}</td>
+          <td>{{e.nom}}</td>
+          <td>{{e.dateNaissance | date: 'longDate'}}</td>
+          <td *ngIf="authService.isAdmin()">
+            <button (click)="onDeleteEtudiant(e)" class="btn btn-sm btn-danger">
+              <span class="fa fa-trash-o"></span>
+            </button>
+          </td>
+          <td *ngIf="authService.isAdmin()">
+            <button (click)="onEditEtudiant(e)" class="btn btn-sm btn-success">
+              <span class="fa fa-edit"></span>
+            </button>
+          </td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

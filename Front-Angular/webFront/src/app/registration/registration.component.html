@@ -1,0 +1,42 @@
+<div class="container">
+  <div class="alert alert-success row col-md-6 col-md-offset-3" *ngIf="mode==1">
+    <strong>Vous vous ete bien enregistrer</strong>
+  </div>
+  <div class="row col-md-6 col-md-offset-3">
+    <div class="panel panel-default">
+      <div class="panel-heading">Créer un compte</div>
+      <div class="panel-body">
+        <form #f="ngForm" (ngSubmit)="onSaveUser(f.value)">
+          <div class="form-group">
+            <label class="control-label"> Nom utilisateur </label>
+            <input class="form-control" type="text" name="username" ngModel="" required />
+          </div>
+          <div class="form-group">
+            <label class="control-label"> Mot de passe </label>
+            <input class="form-control" type="password" name="password" ngModel="" required />
+          </div>
+          <div class="form-group">
+            <label class="control-label"> Confirmer mot de passe </label>
+            <input class="form-control" type="password" name="repassword" ngModel="" required />
+          </div>
+          <button class="btn btn-success" type="submit" [disabled]="!f.valid">Save</button>
+          <button type="submit" routerLink="/login" class="btn btn-danger">J'ai déjà un compte</button>
+        </form>
+      </div>
+    </div>
+
+    <!--<div class="panel panel-default" *ngIf="mode==2">
+      <div class="panel-heading">New Task Added</div>
+      <div class="form-group container">
+        <div>
+          <label> ID : {{task.id}} </label>
+        </div>
+        <div>
+          <label> Task Name : {{task.taskName}} </label>
+        </div>
+      </div>
+    </div>-->
+  </div>
+</div>
+
+

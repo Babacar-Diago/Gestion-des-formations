@@ -1,0 +1,36 @@
+<div class="container col-lg-6 card card-body col-md-offset-3" *ngIf="listFormations">
+  <div class="panel panel-primary">
+    <div class="panel-heading">LISTE DES ETUDIANTS</div>
+    <div class="panel-body">
+       <span *ngFor="let f of listFormations._embedded.formations">
+         <button (click)="onGetEtudiants(f)"
+                 [ngClass]="f.id==currentFormation.id ? 'btn btn-primary' : 'btn btn-default'">
+                 {{f.nom}}
+         </button>
+       </span>
+      <hr>
+      <table *ngIf="listEtudiants" class="table">
+        <tr>
+          <th>Prénom</th><th>Nom</th><th>Date de naissance</th>
+        </tr>
+        <tr *ngFor="let value of listEtudiants._embedded.etudiants">
+          <td>{{value.prenom}}</td>
+          <td>{{value.nom}}</td>
+          <td>{{value.dateNaissance | date: 'longDate'}}</td>
+        </tr>
+      </table>
+    </div>
+  </div>
+</div>
+
+<!--
+<table *ngIf="listFormations" class="table">
+  <tr>
+    <th>ID</th><th>Nom</th><th>Duree</th>
+  </tr>
+  <tr *ngFor="let value of listFormations._embedded.formations">
+    <td>{{value.id}}</td>
+    <td>{{value.nom}}</td>
+    <td>{{value.duree}}</td>
+  </tr>
+</table>-->

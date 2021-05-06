@@ -1,0 +1,49 @@
+<div class="container"  *ngIf="authService.estConnecte">
+  <div class="alert alert-success row col-md-6 col-md-offset-3" *ngIf="mode==1">
+    <strong>Etudiant ajouté avec succès</strong>
+  </div>
+  <div class="row col-md-6 col-md-offset-3">
+    <div class="panel panel-default">
+      <div class="panel-heading">Nouveau Etudiant</div>
+      <div class="panel-body">
+        <form #f="ngForm" (ngSubmit)="onSaveEtudiant(f.value)">
+          <div class="form-group">
+            <label class="control-label"> Nom </label>
+            <input class="form-control" type="text" name="nom" required />
+          </div>
+          <div class="form-group">
+            <label class="control-label"> Prénom </label>
+            <input class="form-control" type="text" name="prenom" required />
+          </div>
+          <div class="form-group">
+            <label class="control-label"> Date naissance </label>
+            <input class="form-control" type="text" name="dateNaissance" required />
+          </div>
+          <div class="form-group">
+            <label class="control-label"> Formation </label>
+            <select class="form-control" name="formation">
+              <option *ngFor="let formation of listFormations._embedded.formations" value="http://localhost:8080/service-etudiant/formations/{{formation.id}}">
+                {{formation.nom}}
+              </option>
+            </select>
+          </div>
+          <button class="btn btn-success" type="submit">Save</button>
+        </form>
+      </div>
+    </div>
+
+    <!--<div class="panel panel-default" *ngIf="mode==2">
+      <div class="panel-heading">New Task Added</div>
+      <div class="form-group container">
+        <div>
+          <label> ID : {{task.id}} </label>
+        </div>
+        <div>
+          <label> Task Name : {{task.taskName}} </label>
+        </div>
+      </div>
+    </div>-->
+  </div>
+</div>
+
+

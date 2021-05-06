@@ -1,0 +1,34 @@
+<div class="container" *ngIf="authService.estConnecte()">
+  <!--<div class="alert alert-danger" *ngIf="mode==0">
+    <strong>You are not authorized to add Task</strong>
+  </div>-->
+  <div class="row col-md-6 col-md-offset-3">
+    <div class="panel panel-default">
+      <div class="panel-heading">Modifier Etudiant</div>
+      <div class="panel-body">
+
+        <div *ngIf="productFormGroup">
+          <form [formGroup]="productFormGroup" style="margin-top: 20px">
+            <div class="form-group" [hidden]="true">
+              <label>ID</label>
+              <input type="text" class="form-control" formControlName="id">
+            </div>
+            <div class="form-group">
+              <label>Nom formation</label>
+              <input type="text" class="form-control" formControlName="nom"
+                     [ngClass]="{'is-invalid':submitted && productFormGroup.controls.nom.errors}">
+              <div *ngIf="submitted && productFormGroup.controls.nom.errors" class="invalid-feedback">
+                <div *ngIf="productFormGroup.controls.nom.errors.required">Nom formation est obligatoire</div>
+              </div>
+            </div>
+            <div class="form-group">
+              <label>Durée (heure)</label>
+              <input type="text" class="form-control" formControlName="duree">
+            </div>
+            <button class="btn btn-success" (click)="onUpdateFormation()">Save</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

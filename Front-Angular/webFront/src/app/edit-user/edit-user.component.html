@@ -1,0 +1,30 @@
+<div class="col-lg-6 card card-body col-md-offset-3" >
+  <p></p>
+  <!--<button class="btn btn-primary" (click)="onNewEtudiant()" *ngIf="authService.isAdmin()">Ajouter un nouveau étudiant</button>
+  <p></p>-->
+  <div class="panel panel-primary">
+    <div class="panel-heading">LISTE DES ETUDIANTS</div>
+    <div class="panel-body">
+      <table class="table table-bordered">
+        <thead>
+        <tr>
+          <th>ID</th>
+          <th>Username</th>
+          <th>Suppression</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let us of users._embedded.appUsers">
+          <td>{{us.id}}</td>
+          <td>{{us.username}}</td>
+          <td>
+            <button class="btn btn-sm btn-danger"> <!--(click)="onDeleteEtudiant(us)"-->
+              <span class="fa fa-trash-o"></span>
+            </button>
+          </td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

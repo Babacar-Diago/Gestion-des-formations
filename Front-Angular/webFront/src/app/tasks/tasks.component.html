@@ -1,0 +1,40 @@
+
+
+<div class="col-lg-6 card card-body col-md-offset-3" >
+  <p></p>
+  <!--<button class="btn btn-primary" (click)="onNewFormation()" *ngIf="authService.isAdmin()">Nouvelle formation</button>
+  <p></p>-->
+  <div class="panel panel-primary">
+    <div class="panel-heading">LISTE DES FORMATIONS</div>
+    <div class="panel-body">
+      <table class="table table-bordered">
+        <thead>
+        <tr>
+          <th>ID</th>
+          <th>Nom</th>
+          <th>Durée (heure)</th>
+          <th *ngIf="authService.isAdmin()">Supprimer</th>
+          <th *ngIf="authService.isAdmin()">Modifier</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let f of formations._embedded.formations">
+          <td>{{f.id}}</td>
+          <td>{{f.nom}}</td>
+          <td>{{f.duree}}</td>
+          <td *ngIf="authService.isAdmin()">
+            <button (click)="onDeleteFormation(f)" class="btn btn-sm btn-danger">
+              <span class="fa fa-trash-o align-self-center"></span>
+            </button>
+          </td>
+          <td *ngIf="authService.isAdmin()">
+            <button (click)="onEditFormation(f)" class="btn btn-sm btn-success">
+              <span class="fa fa-edit"></span>
+            </button>
+          </td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,37 @@
+<p></p>
+<div class="container">
+  <nav class="navbar navbar-default">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <a class="navbar-brand" href="#">GestFormation</a>
+      </div>
+      <ul class="nav navbar-nav">
+
+        <li class="dropdown" *ngIf="authService.estConnecte()">
+          <a class="dropdown-toggle" data-toggle="dropdown" routerLink="#">Etudiant
+            <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li *ngIf="authService.isAdmin()"><a routerLink="/new-etudiant">Ajouter un nouveau étudiant</a></li>
+            <li><a routerLink="/listEtudiants">Liste des étudiants</a></li>
+          </ul>
+        </li>
+
+        <li class="dropdown" *ngIf="authService.estConnecte()">
+          <a class="dropdown-toggle" data-toggle="dropdown" routerLink="#">Formation
+            <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li *ngIf="authService.isAdmin()"><a routerLink="/new-formation">Ajouter une nouvelle formation</a></li>
+            <li><a routerLink="/formations">Liste formations</a></li>
+          </ul>
+        </li>
+        <li><a routerLink="/registration" *ngIf="!authService.estConnecte()">S'inscrire</a></li>
+        <li><a routerLink="/etudiants" *ngIf="authService.estConnecte()">Etudiants par formation</a></li>
+        <li><a routerLink="/edit-user" *ngIf="authService.estConnecte()  && authService.isAdmin()">Gestion des utilisateurs</a></li>
+      </ul>
+<!--      <button class="btn btn-danger navbar-btn navbar-right" routerLink="/login" *ngIf="!authService.estConnecte()">Login</button>-->
+      <button class="btn btn-danger navbar-btn navbar-right" (click)="onLogout()" *ngIf="authService.estConnecte()">Logout</button>
+    </div>
+  </nav>
+ <p></p>
+  <router-outlet></router-outlet>
+</div>
